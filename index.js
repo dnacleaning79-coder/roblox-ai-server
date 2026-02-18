@@ -4,7 +4,7 @@ import fetch from "node-fetch";
 const app = express();
 app.use(express.json());
 
-// This endpoint will get messages from Roblox
+// Endpoint for Roblox chat
 app.post("/chat", async (req, res) => {
   const userMessage = req.body.message;
 
@@ -19,7 +19,6 @@ app.post("/chat", async (req, res) => {
     });
 
     const data = await response.json();
-    // Hugging Face returns text in different formats sometimes
     const reply = data[0]?.generated_text || "I didn't understand that.";
 
     res.json({ reply });
@@ -34,8 +33,6 @@ app.get("/", (req, res) => {
   res.send("AI server is running!");
 });
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log("Server running on port " + port);
-});
+const port = process.e
+
 
